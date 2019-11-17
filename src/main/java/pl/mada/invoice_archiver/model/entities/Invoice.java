@@ -11,8 +11,8 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "company_name", nullable = false, unique = true)
-    private String companyName;
+    @Column(name = "NIP", nullable = false, unique = true)
+    private String nip;
     @Column(name = "invoice_number")
     private String invoiceNumber;
     @Column(name = "date_of_issue")
@@ -21,10 +21,6 @@ public class Invoice {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
 
     @OneToOne
     @JoinColumn(name = "file_id")
@@ -35,9 +31,9 @@ public class Invoice {
 
     public void setId(Long id) { this.id = id; }
 
-    public String getCompanyName() { return companyName; }
+    public String getNip() { return nip; }
 
-    public void setCompanyName(String companyName) { this.companyName = companyName; }
+    public void setNip(String nip) { this.nip = nip; }
 
     public String getInvoiceNumber() { return invoiceNumber; }
 
@@ -65,7 +61,7 @@ public class Invoice {
     public String toString() {
         return "Invoice{" +
                 "id=" + id +
-                ", company='" + companyName + '\'' +
+                ", company='" + nip + '\'' +
                 ", invoiceNumber='" + invoiceNumber + '\'' +
                 ", dateOfIssue='" + dateOfIssue + '\'' +
                 '}';

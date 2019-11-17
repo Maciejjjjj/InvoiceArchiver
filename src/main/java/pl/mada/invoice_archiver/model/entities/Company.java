@@ -24,8 +24,6 @@ public class Company {
     @Column(name="address")
     private String address;
 
-    @OneToMany(mappedBy = "companies")
-    private Set<Invoice> invoices;
 
     public Long getId() {
         return id;
