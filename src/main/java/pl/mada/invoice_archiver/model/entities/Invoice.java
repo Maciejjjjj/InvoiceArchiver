@@ -11,20 +11,33 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
-    private String company;
+    @Column(name = "company_name", nullable = false, unique = true)
+    private String companyName;
     @Column(name = "invoice_number")
     private String invoiceNumber;
     @Column(name = "date_of_issue")
     private LocalDate dateOfIssue;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
+
+    @OneToOne
+    @JoinColumn(name = "file_id")
+    private File file;
+
+
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
 
-    public String getCompany() { return company; }
+    public String getCompanyName() { return companyName; }
 
-    public void setCompany(String company) { this.company = company; }
+    public void setCompanyName(String companyName) { this.companyName = companyName; }
 
     public String getInvoiceNumber() { return invoiceNumber; }
 
@@ -52,7 +65,7 @@ public class Invoice {
     public String toString() {
         return "Invoice{" +
                 "id=" + id +
-                ", company='" + company + '\'' +
+                ", company='" + companyName + '\'' +
                 ", invoiceNumber='" + invoiceNumber + '\'' +
                 ", dateOfIssue='" + dateOfIssue + '\'' +
                 '}';

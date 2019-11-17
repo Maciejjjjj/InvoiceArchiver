@@ -25,6 +25,10 @@ public class User {
     @Column(name="password",nullable = false)
     private String password;
 
+    @OneToMany(mappedBy = "user")
+    private Set<Invoice> invoices;
+
+
 
     public Long getId() {
         return id;

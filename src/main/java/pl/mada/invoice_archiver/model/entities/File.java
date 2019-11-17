@@ -27,6 +27,9 @@ import java.util.Objects;
         @Column(name = "data", nullable = false, columnDefinition = "MEDIUMBLOB")
         private byte[] data;
 
+        @OneToOne(mappedBy = "file")
+        private Invoice invoice;
+
         public Long getId() {
             return id;
         }

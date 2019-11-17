@@ -4,6 +4,7 @@ package pl.mada.invoice_archiver.model.entities;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "companies")
@@ -22,6 +23,9 @@ public class Company {
 
     @Column(name="address")
     private String address;
+
+    @OneToMany(mappedBy = "companies")
+    private Set<Invoice> invoices;
 
     public Long getId() {
         return id;
