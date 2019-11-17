@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
@@ -10,17 +11,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <div class="container">
     <div class="row" style="margin-top: 40px">
         <div class="col-1"></div>
-        <div class="col-10" style="padding-bottom: 20px"><h2>Register</h2></div>
+        <div class="col-10" style="padding-bottom: 20px"><h2>Duuuuuuuuuuupa</h2></div>
         <div class="col-1"></div>
     </div>
     <div class="row">
         <div class="col-1"></div>
         <div class="col-6">
-            <form method="post" action="/register">
+            <c:if test="${param['error'] != null}">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Wrong data!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </c:if>
+            <form method="post" action="/login">
                 <div class="form-group">
                     <label for="login">Username</label>
                     <input type="text" required name="login" id="login" class="form-control" placeholder="Enter username"/>
@@ -29,15 +37,7 @@
                     <label for="password">Password</label>
                     <input type="password" required name="password" id="password" class="form-control" placeholder="Enter password"/>
                 </div>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" required name="name" id="name" class="form-control" placeholder="Enter name"/>
-                </div>
-                <div class="form-group">
-                    <label for="surname">Surname</label>
-                    <input type="text" required name="surname" id="surname" class="form-control" placeholder="Enter surname"/>
-                </div>
-                <button class="btn btn-primary" type="submit">Register</button>
+                <button class="btn btn-primary" type="submit">Login</button>
                 <button class="btn btn-secondary" type="reset">Cancel</button>
                 <sec:csrfInput/>
             </form>
