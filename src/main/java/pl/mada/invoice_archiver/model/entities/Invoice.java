@@ -1,5 +1,7 @@
 package pl.mada.invoice_archiver.model.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -15,7 +17,9 @@ public class Invoice {
     private String nip;
     @Column(name = "invoice_number")
     private String invoiceNumber;
+
     @Column(name = "date_of_issue")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfIssue;
 
     @ManyToOne
@@ -42,6 +46,22 @@ public class Invoice {
     public LocalDate getDateOfIssue() { return dateOfIssue; }
 
     public void setDateOfIssue(LocalDate dateOfIssue) { this.dateOfIssue = dateOfIssue; }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     @Override
     public boolean equals(Object o) {

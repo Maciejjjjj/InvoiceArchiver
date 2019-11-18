@@ -14,31 +14,27 @@
 <div class="container">
     <div class="row" style="margin-top: 40px">
         <div class="col-1"></div>
-        <div class="col-10" style="padding-bottom: 20px"><h2>Log-in</h2></div>
+        <div class="col-10" style="padding-bottom: 20px"><h2>Log</h2></div>
         <div class="col-1"></div>
     </div>
     <div class="row">
         <div class="col-1"></div>
         <div class="col-6">
-            <c:if test="${param['error'] != null}">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Wrong data!
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </c:if>
-            <form method="post" action="/login">
+            <form method="post" action="/add-invoice">
                 <div class="form-group">
-                    <label for="login">Username</label>
-                    <input type="text" required name="login" id="login" class="form-control" placeholder="Enter username"/>
+                    <label for="nip">NIP</label>
+                    <input type="text" required name="nip" id="nip" class="form-control" placeholder="enter NIP"/>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" required name="password" id="password" class="form-control" placeholder="Enter password"/>
+                    <label for="invoiceNumber">Invoice number</label>
+                    <input type="text" required name="invoiceNumber" id="invoiceNumber" class="form-control" placeholder="Enter invoice number"/>
                 </div>
-                <button class="btn btn-primary" type="submit">Login</button>
-                <button class="btn btn-secondary" type="reset">Cancel</button>
+                <div class="form-group">
+                    <label for="dateOfIssue">Date o issue</label>
+                    <input type="date" required name="dateOfIssue" id="dateOfIssue" class="form-control" />
+                </div>
+                <button class="btn btn-primary" type="submit">Add</button>
+                <button class="btn btn-secondary" type="reset">Reset</button>
                 <sec:csrfInput/>
             </form>
         </div>
