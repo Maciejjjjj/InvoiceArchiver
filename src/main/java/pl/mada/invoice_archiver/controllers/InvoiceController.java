@@ -34,13 +34,13 @@ public class InvoiceController {
     @PostMapping
     public String addInvoice(String nip, String invoiceNumber, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfIssue, Principal principal) {
 
-        //String login = principal.getName();
+        String login = principal.getName();
 
         Invoice invoice = new Invoice();
         invoice.setNip(nip);
         invoice.setInvoiceNumber(invoiceNumber);
         invoice.setDateOfIssue(dateOfIssue.plusDays(1));
-        //invoice.setUser(userRepository.findByLogin(login));
+        invoice.setUser(userRepository.findByLogin(login));
 
 
         invoiceRepository.save(invoice);
