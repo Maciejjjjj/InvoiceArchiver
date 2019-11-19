@@ -1,6 +1,7 @@
 package pl.mada.invoice_archiver.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,15 +32,15 @@ public class InvoiceController {
     }
 
     @PostMapping
-    public String addInvoice(String nip, String invoiceNumber, LocalDate dateOfIssue, Principal principal) {
+    public String addInvoice(String nip, String invoiceNumber, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfIssue, Principal principal) {
 
-        String login = principal.getName();
+        //String login = principal.getName();
 
         Invoice invoice = new Invoice();
         invoice.setNip(nip);
         invoice.setInvoiceNumber(invoiceNumber);
-        invoice.setDateOfIssue(dateOfIssue);
-        invoice.setUser(userRepository.findByLogin(login));
+        invoice.setDateOfIssue(dateOfIssue.plusDays(1));
+        //invoice.setUser(userRepository.findByLogin(login));
 
 
         invoiceRepository.save(invoice);
