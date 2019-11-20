@@ -15,6 +15,7 @@ public class Invoice {
     private String nip;
     @Column(name = "invoice_number")
     private String invoiceNumber;
+
     @Column(name = "date_of_issue")
     private LocalDate dateOfIssue;
 
@@ -42,6 +43,22 @@ public class Invoice {
     public LocalDate getDateOfIssue() { return dateOfIssue; }
 
     public void setDateOfIssue(LocalDate dateOfIssue) { this.dateOfIssue = dateOfIssue; }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     @Override
     public boolean equals(Object o) {
