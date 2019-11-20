@@ -23,7 +23,7 @@ public class ShowInvoiceController {
     @GetMapping
         public String prepareHomePage (Model model){
             List<Invoice> allInvoices = invoiceRepository.findAll();
-            model.addAttribute("invoices", allInvoices);
+            model.addAttribute("invoicesAll", allInvoices);
             return "WEB-INF/views/show-invoice.jsp";
 
         }

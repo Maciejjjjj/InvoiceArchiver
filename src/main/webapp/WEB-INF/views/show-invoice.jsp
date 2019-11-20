@@ -12,11 +12,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="/webjars/bootstrap/4.1.1/css/bootstrap.css">
-    <script src="/webjars/jquery/3.3.1-1/jquery.js"></script>
-    <script src="/webjars/bootstrap/4.1.1/js/bootstrap.js"></script>
-    <script src="/webjars/popper.js/1.14.1/umd/popper.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -25,24 +24,32 @@
     <sec:authorize access="isAuthenticated()">
         <div class="row" style="margin-top: 40px; margin-bottom: 10px">
             <div class="col-1"></div>
-            <div class="col-6"><h2>Pokaż fakturę</h2></div>
-            <div class="col-5"></div>
+            <div class="col-10" style="padding-bottom: 20px"><h2>List of invoices</h2></div>
+            <div class="col-1"></div>
         </div>
-
         <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
+            <div class="col-1"></div>
+            <div class="col-6">
                 <form method="post" action="/show-all-invoices">
                     <div class="form-group">
-                        <label for="title">Tytuł faktury:</label>
-                        <input type="text" required name="title" id="title" class="form-control"
-                               placeholder="Podaj tytuł ogłoszenia"/>
+                        <label for="nip">NIP</label>
+                        <input type="text" required name="nip" id="nip" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <label for="description">Opis faktury</label>
-                        <textarea name="description" id="description"
-                                  class="form-control"
-                                  placeholder="Uzupełnij opis ogłoszenia"></textarea>
+                        <label for="invoiceNumber">Invoice number</label>
+                        <input type="text" required name="invoiceNumber" id="invoiceNumber" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateOfIssue">Date of issue</label>
+                        <input type="date" required name="dateOfIssue" id="dateOfIssue" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="userId">User</label>
+                        <input type="text" required name="userId" id="userId" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="fileId">File</label>
+                        <input type="text" required name="fileId" id="fileId" class="form-control" />
                     </div>
                     <button class="btn btn-primary" type="submit">Dodaj</button>
                     <button class="btn btn-secondary" type="reset">Wyczyść dane</button>
@@ -55,7 +62,7 @@
 
     <div class="row" style="margin-top: 40px; margin-bottom: 10px">
         <div class="col-1"></div>
-        <div class="col-6"><h2>Lista ogłoszeń</h2></div>
+        <div class="col-6"><h2>List of invoices</h2></div>
         <div class="col-5"></div>
     </div>
 
@@ -66,15 +73,18 @@
                     <th>Lp.</th>
                     <th>NIP</th>
                     <th>Invoice number</th>
-                    <th>Data dodania</th>
+                    <th>Date of issue</th>
+                    <th>User</th>
+                    <th>File</th>
                 </tr>
-                <c:forEach items="${invoices}" var="invoice" varStatus="stat">
+                <c:forEach items="${invoicesAll}" var="invoices" varStatus="stat">
                     <tr>
                         <td>${stat.count}</td>
-                        <td><b>${invoices.title}</b></td>
-                        <td>${invoices.description}</td>
-                        <td>${invoices.user.username}</td>
-                        <td>${invoices.posted}</td>
+                        <td><b>${invoices.nip}</b></td>
+                        <td>${invoices.invoiceNumber}</td>
+                        <td>${invoices.dateOfIssue}</td>
+                        <td>${invoices.login}</td>
+                        <td>${invoices.fileName}</td>
                     </tr>
                 </c:forEach>
             </table>
