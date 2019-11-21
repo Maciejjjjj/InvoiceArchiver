@@ -83,8 +83,8 @@
                         <td><b>${invoices.nip}</b></td>
                         <td>${invoices.invoiceNumber}</td>
                         <td>${invoices.dateOfIssue}</td>
-                        <td>${invoices.login}</td>
-                        <td>${invoices.fileName}</td>
+                        <td>${invoices.user.login}</td>
+                        <td>${invoices.file.fileName}</td>
                     </tr>
                 </c:forEach>
             </table>
