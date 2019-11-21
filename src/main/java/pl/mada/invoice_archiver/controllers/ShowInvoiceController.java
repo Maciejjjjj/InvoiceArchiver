@@ -8,7 +8,6 @@ import pl.mada.invoice_archiver.model.entities.Invoice;
 import pl.mada.invoice_archiver.model.repositories.InvoiceRepository;
 
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/show-all-invoices")
