@@ -15,7 +15,7 @@
     <div class="upload-content">
         <div class="single-upload">
             <h3>Add invoice to upload</h3>
-            <form id="singleUploadForm" name="singleUploadForm">
+            <form method="post" action="/upload" id="singleUploadForm" name="singleUploadForm">
                 <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
                 <button type="submit" class="primary submit-btn">Submit</button>
             </form>
