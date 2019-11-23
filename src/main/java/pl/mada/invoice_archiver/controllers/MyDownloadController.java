@@ -17,13 +17,13 @@ import java.io.File;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/download")
+@RequestMapping("/download-document")
 public class MyDownloadController {
 
     private static final String FILE_PATH = "C:/tmp/Fruit-Category.pdf";
     private static final String APPLICATION_PDF = "application/pdf";
 
-    @RequestMapping(value = "/entity", method = RequestMethod.GET, produces = APPLICATION_PDF)
+    @RequestMapping(value = "/download-document", method = RequestMethod.GET, produces = APPLICATION_PDF)
     public @ResponseBody HttpEntity<byte[]> downloadByEntity() throws IOException {
         File file = getFile();
         byte[] document = FileCopyUtils.copyToByteArray(file);
