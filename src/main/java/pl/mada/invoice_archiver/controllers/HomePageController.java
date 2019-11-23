@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomePageController {
     @GetMapping
     public String prepareAddInvoicePage() {
-        return "/WEB-INF/views/add-invoice-form.jsp";
+        return "/WEB-INF/views/home-page.jsp";
     }
 
 
