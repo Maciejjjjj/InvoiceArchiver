@@ -20,8 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
-<body>
-<div class="generic-container">
+<body><div class="generic-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading"><span class="lead"><b>List of invoices</b></span></div>
