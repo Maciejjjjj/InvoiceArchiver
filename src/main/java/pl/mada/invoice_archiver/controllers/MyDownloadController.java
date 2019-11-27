@@ -30,7 +30,7 @@ public class MyDownloadController {
 
         HttpHeaders header = new HttpHeaders();
         header.setContentType(new MediaType("application", "pdf"));
-        header.set("Content-Disposition", "inline; filename=" + file.getName());
+        header.set("Content-Disposition", "attachment; filename=" + file.getName());
         header.setContentLength(document.length);
 
         return new HttpEntity<byte[]>(document, header);
