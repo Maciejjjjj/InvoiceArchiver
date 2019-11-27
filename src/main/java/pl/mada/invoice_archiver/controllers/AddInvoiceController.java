@@ -15,13 +15,13 @@ import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/add-invoice")
-public class InvoiceController {
+public class AddInvoiceController {
 
     private final InvoiceRepository invoiceRepository;
     private final UserRepository userRepository;
 
     @Autowired
-    public InvoiceController(InvoiceRepository invoiceRepository, UserRepository userRepository) {
+    public AddInvoiceController(InvoiceRepository invoiceRepository, UserRepository userRepository) {
         this.invoiceRepository = invoiceRepository;
         this.userRepository = userRepository;
     }
