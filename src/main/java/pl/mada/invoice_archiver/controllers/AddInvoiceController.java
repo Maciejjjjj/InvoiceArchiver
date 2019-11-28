@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.mada.invoice_archiver.model.entities.Invoice;
+import pl.mada.invoice_archiver.model.repositories.FileRepository;
 import pl.mada.invoice_archiver.model.repositories.InvoiceRepository;
 import pl.mada.invoice_archiver.model.repositories.UserRepository;
 
@@ -19,11 +20,13 @@ public class AddInvoiceController {
 
     private final InvoiceRepository invoiceRepository;
     private final UserRepository userRepository;
+    private final FileRepository fileRepository;
 
     @Autowired
-    public AddInvoiceController(InvoiceRepository invoiceRepository, UserRepository userRepository) {
+    public AddInvoiceController(InvoiceRepository invoiceRepository, UserRepository userRepository, FileRepository fileRepository) {
         this.invoiceRepository = invoiceRepository;
         this.userRepository = userRepository;
+        this.fileRepository = fileRepository;
     }
 
     @GetMapping
@@ -32,7 +35,7 @@ public class AddInvoiceController {
     }
 
     @PostMapping
-    public String addInvoice(String nip, String invoiceNumber, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfIssue, Principal principal) {
+    public String addInvoice(String nip, String invoiceNumber, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfIssue, Principal principal, Long savedFileId) {
 
         String login = principal.getName();
 
@@ -41,6 +44,7 @@ public class AddInvoiceController {
         invoice.setInvoiceNumber(invoiceNumber);
         invoice.setDateOfIssue(dateOfIssue.plusDays(1));
         invoice.setUser(userRepository.findByLogin(login));
+        invoice.setFile(fileRepository.findFileById(savedFileId));
 
 
         invoiceRepository.save(invoice);
