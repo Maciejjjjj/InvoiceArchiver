@@ -29,7 +29,6 @@ public class InvoiceUploadController {
     public String uploadFile(@RequestParam("file") MultipartFile file) {
         fileStorageService.storeFile(file);
 
-
         return "redirect:/add-invoice";
     }
 

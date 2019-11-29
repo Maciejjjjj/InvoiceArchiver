@@ -33,4 +33,8 @@ public class FileStorageService {
             throw new RuntimeException();
         }
     }
+
+    public File getFile(String fileId) {
+        return fileRepository.findById(fileId);
+    }
 }
