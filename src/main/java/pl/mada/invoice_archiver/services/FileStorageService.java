@@ -34,7 +34,7 @@ public class FileStorageService {
         }
     }
 
-    public File getFile(String fileId) {
+    public java.io.File getFile(String fileId) {
         return fileRepository.findById(fileId);
     }
 }
