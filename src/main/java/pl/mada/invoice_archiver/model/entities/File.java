@@ -30,6 +30,15 @@ import java.util.Objects;
         @OneToOne(mappedBy = "file")
         private Invoice invoice;
 
+    public File() {
+    }
+
+    public File(String fileName, String contentType, byte[] data) {
+        this.fileName = fileName;
+        this.contentType = contentType;
+        this.data = data;
+    }
+
         public Long getId() {
             return id;
         }
