@@ -26,8 +26,7 @@ public class ShowInvoiceController {
 
     @GetMapping
         public String prepareHomePage(Model model, Principal principal){
-            List<Invoice> allInvoices = invoiceRepository.findAllByUser_Login(principal.getName());
-            model.addAttribute("invoicesAll", allInvoices);
+            List<Invoice> allInvoices = invoiceRepository.findAllByUser_Login(principal.getName());model.addAttribute("invoicesAll", allInvoices);
             model.addAttribute("user",principal);
             return "WEB-INF/views/show-invoice.jsp";
 
