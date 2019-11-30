@@ -35,4 +35,8 @@ public class FileStorageService {
             throw new RuntimeException();
         }
     }
+
+    public File getFile(Long fileId) {
+        return fileRepository.findFileById(fileId);
+    }
 }

@@ -20,7 +20,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 </head>
-<body><div class="generic-container">
+<body>
+<div class="generic-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading"><span class="lead"><b>List of invoices</b></span></div>
@@ -37,18 +38,25 @@
                 </tr>
                 <thead>
                 <tbody>
-                <c:forEach items="${invoicesAll}" var="invoices" varStatus="stat">
+                <c:forEach items="${invoicesAll}" var="invoice" varStatus="stat">
                     <tr>
                         <td>${stat.count}</td>
-                        <td><b>${invoices.nip}</b></td>
-                        <td>${invoices.invoiceNumber}</td>
-                        <td>${invoices.dateOfIssue}</td>
-                        <td>${invoices.user.login}</td>
-                        <td>${invoices.file.fileName}</td>
-                        <td><a href="<c:url value='/download-document-${user.id}-${doc.id}' />" class="btn btn-success custom-width">download</a></td>
+                        <td><b>${invoice.nip}</b></td>
+                        <td>${invoice.invoiceNumber}</td>
+                        <td>${invoice.dateOfIssue}</td>
+                        <td>${invoice.user.login}</td>
+                        <td>${invoice.file.fileName}</td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${invoice.file != null}"><a
+                                        href="<c:url value='/download-document-${invoice.user.id}-${invoice.file.id}' />"
+                                        class="btn btn-success custom-width">download</a></c:when>
+                                <c:otherwise>No file to download</c:otherwise>
+                            </c:choose>
+                        </td>
                     </tr>
                 </c:forEach>
-            </tbody>
+                </tbody>
             </table>
         </div>
     </div>
