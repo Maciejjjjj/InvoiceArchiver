@@ -15,7 +15,7 @@ public class FileStorageService {
     @Autowired
     private FileRepository fileRepository;
 
-    public File storeFile(MultipartFile file) {
+    public Long storeFile(MultipartFile file) {
 
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -26,8 +26,10 @@ public class FileStorageService {
             }
 
             File fileToSave = new File(fileName, file.getContentType(), file.getBytes());
+            fileRepository.save(fileToSave);
 
-            return fileRepository.save(fileToSave);
+            return fileToSave.getId();
+
 
         } catch (IOException ex) {
             throw new RuntimeException();
