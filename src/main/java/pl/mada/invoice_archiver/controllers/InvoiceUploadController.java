@@ -14,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import pl.mada.invoice_archiver.services.FileStorageService;
 import pl.mada.invoice_archiver.services.OcrService;
 
+import java.time.LocalDate;
+
 @Controller
 @RequestMapping("/upload")
 public class InvoiceUploadController {
@@ -37,7 +39,9 @@ public class InvoiceUploadController {
         model.addAttribute("savedFileId", savedFileId);
         AddInvoiceRequest addInvoiceRequest = new AddInvoiceRequest();
         String nip = ocrService.getNipFromInvoice(savedFileId);
+        LocalDate dateOfIssue = ocrService.getDateOfIssueFromInvoice(savedFileId);
         addInvoiceRequest.setNip(nip);
+        addInvoiceRequest.setDateOfIssue(dateOfIssue);
         model.addAttribute("addInvoiceRequest", addInvoiceRequest);
         return "/WEB-INF/views/add-invoice-form.jsp";
     }
