@@ -27,6 +27,10 @@
             <button class="btn btn-outline-primary" type="submit">Add Invoice</button>
                                 <sec:csrfInput/>
                             </form>
+        <form class="form-inline mr-2 mt-3" method="get" action="/add-invoice">
+            <button class="btn btn-outline-primary" type="submit">Show all your Invoices</button>
+            <sec:csrfInput/>
+        </form>
 
 
             </div>
