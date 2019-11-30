@@ -33,6 +33,10 @@
                     <label for="dateOfIssue">Date o issue</label>
                     <input type="date" required name="dateOfIssue" id="dateOfIssue" class="form-control" />
                 </div>
+                <div class="form-group">
+                    <label for="savedFileId"></label>
+                    <input type="hidden" value="${savedFileId}" required name="savedFileId" id="savedFileId" class="form-control" />
+                </div>
                 <button class="btn btn-primary" type="submit">Add</button>
                 <button class="btn btn-secondary" type="reset">Reset</button>
                 <sec:csrfInput/>
