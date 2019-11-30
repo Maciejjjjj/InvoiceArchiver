@@ -14,8 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import pl.mada.invoice_archiver.services.FileStorageService;
 import pl.mada.invoice_archiver.services.OcrService;
 
-import java.time.LocalDate;
-
 @Controller
 @RequestMapping("/upload")
 public class InvoiceUploadController {
@@ -37,11 +35,7 @@ public class InvoiceUploadController {
     public String uploadFile(@RequestParam("file") MultipartFile file, Model model) throws TesseractException {
         Long savedFileId = fileStorageService.storeFile(file);
         model.addAttribute("savedFileId", savedFileId);
-        AddInvoiceRequest addInvoiceRequest = new AddInvoiceRequest();
-        String nip = ocrService.getNipFromInvoice(savedFileId);
-        LocalDate dateOfIssue = ocrService.getDateOfIssueFromInvoice(savedFileId);
-        addInvoiceRequest.setNip(nip);
-        addInvoiceRequest.setDateOfIssue(dateOfIssue);
+        AddInvoiceRequest addInvoiceRequest = ocrService.getDataFromInvoice(savedFileId);
         model.addAttribute("addInvoiceRequest", addInvoiceRequest);
         return "/WEB-INF/views/add-invoice-form.jsp";
     }
