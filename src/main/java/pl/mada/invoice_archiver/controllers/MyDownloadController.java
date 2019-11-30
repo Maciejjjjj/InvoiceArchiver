@@ -7,24 +7,26 @@ import org.springframework.http.HttpHeaders;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import pl.mada.invoice_archiver.services.FileStorageService;
 import pl.mada.invoice_archiver.model.entities.File;
 
+@Controller
 public class MyDownloadController {
 
    @Autowired
     private FileStorageService fileStorageService;
 
-    @GetMapping("/downloadFile")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {
+    @GetMapping("/download-document-{userId}-{fileId}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable Long userId, @PathVariable Long fileId) {
 
-        File dbFile = fileStorageService.getFile(fileId);
+        File file = fileStorageService.getFile(fileId);
 
         return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(dbFile.getContentType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dbFile.getFileName()+ "\"")
-                .body(new ByteArrayResource(dbFile.getData()));
+                .contentType(MediaType.parseMediaType(file.getContentType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName()+ "\"")
+                .body(new ByteArrayResource(file.getData()));
     }
 }

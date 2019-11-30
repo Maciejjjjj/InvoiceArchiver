@@ -23,7 +23,6 @@ import java.util.Objects;
         @Column(name = "content_type", nullable = false)
         private String contentType;
         @Lob
-        @Basic(fetch = FetchType.LAZY, optional = false)
         @Column(name = "data", nullable = false, columnDefinition = "MEDIUMBLOB")
         private byte[] data;
 

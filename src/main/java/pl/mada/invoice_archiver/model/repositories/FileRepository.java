@@ -7,5 +7,5 @@ import pl.mada.invoice_archiver.model.entities.File;
 
 public interface FileRepository extends JpaRepository<File, Long> {
 
-    File findById(String fileId);
+    File findFileById(Long fileId);
 }
