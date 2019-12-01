@@ -115,10 +115,8 @@ public class OcrService {
 
         if (matcher4.find()) {
 
-            System.out.println(matcher4.start());
-
             String invoiceNumber = matcher4.group(2);
-            log.info("Znaleziony numer faktury: {}", invoiceNumber);
+            
             addInvoiceRequest.setInvoiceNumber(invoiceNumber);
         }
 
