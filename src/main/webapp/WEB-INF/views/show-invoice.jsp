@@ -62,7 +62,7 @@
                                             <c:choose>
                                                 <c:when test="${invoice.file != null}"><a
                                                         href="<c:url value='/download-document-${invoice.user.id}-${invoice.file.id}' />"
-                                                        class="btn btn-primary btn-sm">download</a></c:when>
+                                                        class="btn btn-success custom-width">download</a></c:when>
                                                 <c:otherwise>No file to download</c:otherwise>
                                             </c:choose>
                                         </td>
