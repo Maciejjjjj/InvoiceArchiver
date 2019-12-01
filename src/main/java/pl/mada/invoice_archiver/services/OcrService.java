@@ -3,7 +3,6 @@ package pl.mada.invoice_archiver.services;
 import lombok.extern.slf4j.Slf4j;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
-import org.hibernate.validator.constraints.pl.NIP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.mada.invoice_archiver.controllers.AddInvoiceRequest;
@@ -28,9 +27,9 @@ public class OcrService {
     private final Pattern NIP_PATTERN = Pattern.compile("(\\d{10})|(\\d{3}-\\d{2}-\\d{2}-\\d{3})|(\\d{3}-\\d{3}-\\d{2}-\\d{2})");
     private final Pattern DATE_PATTERN1 = Pattern.compile("(\\d{2}-\\d{2}-\\d{4})");
     private final Pattern DATE_PATTERN2 = Pattern.compile("(\\d{4}-\\d{2}-\\d{2})");
-    private final Pattern DATE_PATTERN3 = Pattern.compile("(\\d{2}.\\d{2}.\\d{4})");
+    private final Pattern DATE_PATTERN3 = Pattern.compile("(\\d{2}\\.\\d{2}\\.\\d{4})");
 
-    private final Pattern INVOICE_NUMBER_PATTERN = Pattern.compile("(nr|NR|NR:|nr:|Nr|Nr:)\\s*[!@#$%^&*()£]*(\\S+)\\s*");
+    private final Pattern INVOICE_NUMBER_PATTERN = Pattern.compile("(nr[:]*)\\s*[:!@#$%^&*()£]*\\s*(\\S+)\\s*", Pattern.CASE_INSENSITIVE );
 
     public AddInvoiceRequest getDataFromInvoice(Long fileId) throws TesseractException {
 
@@ -115,6 +114,9 @@ public class OcrService {
         Matcher matcher4 = INVOICE_NUMBER_PATTERN.matcher(invoiceOcrText);
 
         if (matcher4.find()) {
+
+            System.out.println(matcher4.start());
+
             String invoiceNumber = matcher4.group(2);
             log.info("Znaleziony numer faktury: {}", invoiceNumber);
             addInvoiceRequest.setInvoiceNumber(invoiceNumber);
