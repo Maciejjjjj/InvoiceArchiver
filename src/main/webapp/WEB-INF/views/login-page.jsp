@@ -32,6 +32,7 @@
                 <div class="form-group">
                     <label for="login">Username</label>
                     <input type="text" required name="username" id="login" class="form-control" placeholder="Enter username"/>
+
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
