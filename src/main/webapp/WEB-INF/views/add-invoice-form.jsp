@@ -23,15 +23,18 @@
             <form method="post" action="/add-invoice">
                 <div class="form-group">
                     <label for="nip">NIP</label>
-                    <input type="text" required name="nip" id="nip" class="form-control" placeholder="enter NIP"/>
+                    <input type="text" required name="nip" id="nip" class="form-control" placeholder="enter NIP"
+                    value="${addInvoiceRequest.nip}"/>
                 </div>
                 <div class="form-group">
                     <label for="invoiceNumber">Invoice number</label>
-                    <input type="text" required name="invoiceNumber" id="invoiceNumber" class="form-control" placeholder="Enter invoice number"/>
+                    <input type="text" required name="invoiceNumber" id="invoiceNumber" class="form-control" placeholder="Enter invoice number"
+                    value="${addInvoiceRequest.invoiceNumber}"/>
                 </div>
                 <div class="form-group">
-                    <label for="dateOfIssue">Date o issue</label>
-                    <input type="date" required name="dateOfIssue" id="dateOfIssue" class="form-control" />
+                    <label for="dateOfIssue">Date of issue</label>
+                    <input type="date" required name="dateOfIssue" id="dateOfIssue" class="form-control"
+                    value="${addInvoiceRequest.dateOfIssue}"/>
                 </div>
                 <div class="form-group">
                     <label for="savedFileId"></label>

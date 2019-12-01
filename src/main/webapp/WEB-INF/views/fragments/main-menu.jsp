@@ -22,7 +22,7 @@
         </form>
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
-        <div style="margin-right: 20px"><h2> Welcome <strong>${pageContext.request.userPrincipal.principal.username}</strong><h2></div>
+        <div style="margin-right: 20px"><h2> Welcome <strong>${pageContext.request.userPrincipal.principal.username}</strong></h2></div>
         <form class="form-inline mt-3" method="post" action="/logout">
             <button class="btn btn-secondary" type="submit">Logout</button>
 
