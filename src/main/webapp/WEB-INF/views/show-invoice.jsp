@@ -14,13 +14,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 </head>
-<body><div class="generic-container">
+<body>
+<div class="generic-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading"><span class="lead"><b>List of invoices</b></span></div>
@@ -37,18 +38,25 @@
                 </tr>
                 <thead>
                 <tbody>
-                <c:forEach items="${invoicesAll}" var="invoices" varStatus="stat">
+                <c:forEach items="${invoicesAll}" var="invoice" varStatus="stat">
                     <tr>
                         <td>${stat.count}</td>
-                        <td><b>${invoices.nip}</b></td>
-                        <td>${invoices.invoiceNumber}</td>
-                        <td>${invoices.dateOfIssue}</td>
-                        <td>${invoices.user.login}</td>
-                        <td>${invoices.file.fileName}</td>
-                        <td><a href="<c:url value='/download-document-${user.id}-${doc.id}' />" class="btn btn-success custom-width">download</a></td>
+                        <td><b>${invoice.nip}</b></td>
+                        <td>${invoice.invoiceNumber}</td>
+                        <td>${invoice.dateOfIssue}</td>
+                        <td>${invoice.user.login}</td>
+                        <td>${invoice.file.fileName}</td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${invoice.file != null}"><a
+                                        href="<c:url value='/download-document-${invoice.user.id}-${invoice.file.id}' />"
+                                        class="btn btn-success custom-width">download</a></c:when>
+                                <c:otherwise>No file to download</c:otherwise>
+                            </c:choose>
+                        </td>
                     </tr>
                 </c:forEach>
-            </tbody>
+                </tbody>
             </table>
         </div>
     </div>

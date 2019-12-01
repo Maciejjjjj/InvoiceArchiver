@@ -1,34 +1,47 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <title>Upload invoice</title>
 </head>
 <body>
-<div class="upload-container">
-    <div class="upload-header">
-        <h2>Upload invoice</h2>
-    </div>
-    <div class="upload-content">
-        <div class="single-upload">
-            <h3>Add invoice to upload</h3>
-            <form method="post" action="/upload" enctype="multipart/form-data" name="singleUploadForm">
-                <input type="file" name="file" required />
-                <button type="submit" class="primary submit-btn">Submit</button>
-                <sec:csrfInput/>
-            </form>
-            <div class="upload-response">
-                <div id="singleFileUploadError"></div>
-                <div id="singleFileUploadSuccess"></div>
+<jsp:include page="fragments/main-menu.jsp"></jsp:include>
+<div class="container">
+
+    <sec:authorize access="isAuthenticated()">
+        <div class="row" style="margin-top: 40px; margin-bottom: 10px">
+            <div class="col-1"></div>
+            <div class="col-6"><h2>Welcome to "Invoice archiver"</h2></div>
+            <div class="col-5"></div>
+        </div>
+
+
+        <form class="form-inline mr-2 mt-3" method="get" action="/upload">
+            <button class="btn btn-primary" type="submit">Add Invoice</button>
+                                <sec:csrfInput/>
+        </form>
+        <form class="form-inline mr-2 mt-3" method="get" action="/show-all-invoices">
+            <button class="btn btn-info" type="submit">Show all your Invoices</button>
+            <sec:csrfInput/>
+        </form>
+
+
             </div>
+            <div class="col-2"></div>
+        </div>
+    </sec:authorize>
+
+
         </div>
     </div>
+
 </div>
 </body>
 </html>
