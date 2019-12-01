@@ -32,7 +32,7 @@
                     value="${addInvoiceRequest.invoiceNumber}"/>
                 </div>
                 <div class="form-group">
-                    <label for="dateOfIssue">Date o issue</label>
+                    <label for="dateOfIssue">Date of issue</label>
                     <input type="date" required name="dateOfIssue" id="dateOfIssue" class="form-control"
                     value="${addInvoiceRequest.dateOfIssue}"/>
                 </div>

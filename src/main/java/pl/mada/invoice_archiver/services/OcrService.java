@@ -25,9 +25,12 @@ public class OcrService {
     @Autowired
     private FileRepository fileRepository;
 
-    private final Pattern NIP_PATTERN = Pattern.compile("(\\d{10})|(\\d{3}-\\d{2}-\\d{2}-\\d{3})");
+    private final Pattern NIP_PATTERN = Pattern.compile("(\\d{10})|(\\d{3}-\\d{2}-\\d{2}-\\d{3})|(\\d{3}-\\d{3}-\\d{2}-\\d{2})");
     private final Pattern DATE_PATTERN1 = Pattern.compile("(\\d{2}-\\d{2}-\\d{4})");
     private final Pattern DATE_PATTERN2 = Pattern.compile("(\\d{4}-\\d{2}-\\d{2})");
+    private final Pattern DATE_PATTERN3 = Pattern.compile("(\\d{2}.\\d{2}.\\d{4})");
+
+    private final Pattern INVOICE_NUMBER_PATTERN = Pattern.compile("(nr|NR|NR:|nr:|Nr|Nr:)\\s*[!@#$%^&*()£]*(\\S+)\\s*");
 
     public AddInvoiceRequest getDataFromInvoice(Long fileId) throws TesseractException {
 
@@ -62,6 +65,7 @@ public class OcrService {
 
 
         String invoiceOcrText = tesseract.doOCR(tmpPath.toFile());
+        System.out.println(invoiceOcrText);
 
         Matcher matcher = NIP_PATTERN.matcher(invoiceOcrText);
 
@@ -95,71 +99,29 @@ public class OcrService {
             addInvoiceRequest.setDateOfIssue(dateOfIssue);
         }
 
+        Matcher matcher3 = DATE_PATTERN3.matcher(invoiceOcrText);
+
+        if (matcher3.find()) {
+
+            String dateOfIssueString = matcher3.group().substring(0,10);
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+            LocalDate dateOfIssue = LocalDate.parse(dateOfIssueString, formatter);
+
+            addInvoiceRequest.setDateOfIssue(dateOfIssue);
+        }
+
+        Matcher matcher4 = INVOICE_NUMBER_PATTERN.matcher(invoiceOcrText);
+
+        if (matcher4.find()) {
+            String invoiceNumber = matcher4.group(2);
+            log.info("Znaleziony numer faktury: {}", invoiceNumber);
+            addInvoiceRequest.setInvoiceNumber(invoiceNumber);
+        }
+
 
         return addInvoiceRequest;
-    }
-
-    public LocalDate getDateOfIssueFromInvoice(Long fileId) throws TesseractException {
-
-        File fileToOcr = fileRepository.findFileById(fileId);
-
-        byte[] fileData = fileToOcr.getData();
-        Path tmpPath = null;
-        try {
-            if (fileToOcr.getContentType().equals("image/jpeg")) {
-                tmpPath = Files.createTempFile("ocr", ".jpeg");
-            } else if (fileToOcr.getContentType().equals("application/pdf")){
-                tmpPath = Files.createTempFile("ocr", ".pdf");
-            }else{
-                log.info("Wrong data type!");
-            }
-        } catch (IOException e) {
-            e.getMessage();
-        }
-        try {
-            Files.write(tmpPath, fileData);
-        } catch (IOException e) {
-            e.getMessage();
-        }
-
-
-        Tesseract tesseract = new Tesseract();
-        String userHome = System.getProperty("user.home");
-        String dataPath = "tessdata_fast-master";
-        tesseract.setDatapath(userHome + "/" + dataPath);
-        tesseract.setLanguage("pol");
-
-
-        String invoiceOcrText = tesseract.doOCR(tmpPath.toFile());
-
-        Matcher matcher1 = DATE_PATTERN1.matcher(invoiceOcrText);
-
-        if (matcher1.find()) {
-
-            String dateOfIssueString = matcher1.group().substring(0,10);
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-            LocalDate dateOfIssue = LocalDate.parse(dateOfIssueString, formatter);
-
-            return dateOfIssue;
-        }
-
-        Matcher matcher2 = DATE_PATTERN2.matcher(invoiceOcrText);
-
-        if (matcher2.find()) {
-
-            String dateOfIssueString = matcher2.group().substring(0,10);
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-            LocalDate dateOfIssue = LocalDate.parse(dateOfIssueString, formatter);
-
-            return dateOfIssue;
-        }
-        else {
-            return null;
-        }
     }
 
 }
