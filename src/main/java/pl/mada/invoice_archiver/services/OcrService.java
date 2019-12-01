@@ -49,11 +49,8 @@ public class OcrService {
         } catch (IOException e) {
             e.getMessage();
         }
-        try {        } catch (IOException e) {
+        try {  Files.write(tmpPath, fileData);      } catch (IOException e) {
             e.getMessage();
-
-            Files.write(tmpPath, fileData);
-        } catch (IOException e) {
 
         }
 
