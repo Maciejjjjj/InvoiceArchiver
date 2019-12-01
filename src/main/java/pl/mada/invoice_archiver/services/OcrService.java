@@ -116,7 +116,7 @@ public class OcrService {
         if (matcher4.find()) {
 
             String invoiceNumber = matcher4.group(2);
-            
+
             addInvoiceRequest.setInvoiceNumber(invoiceNumber);
         }
 
