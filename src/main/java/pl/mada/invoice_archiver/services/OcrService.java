@@ -53,14 +53,18 @@ public class OcrService {
             Files.write(tmpPath, fileData);
         } catch (IOException e) {
             e.getMessage();
+
         }
 
 
-        Tesseract tesseract = new Tesseract();
+
+        Tesseract tesseract = new Tesseract();tesseract.setLanguage("pol");
         String userHome = System.getProperty("user.home");
         String dataPath = "tessdata_fast-master";
         tesseract.setDatapath(userHome + "/" + dataPath);
-        tesseract.setLanguage("pol");
+
+
+
 
 
         String invoiceOcrText = tesseract.doOCR(tmpPath.toFile());
