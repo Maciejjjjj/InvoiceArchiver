@@ -15,7 +15,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"
+            crossorigin="anonymous"></script>
     <title>Upload invoice</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
         <div class="col-1"></div>
         <div class="col-10" style="padding-bottom: 20px">
             <div class="upload-header">
-                <h2>Upload invoice</h2>
+                <h2> Upload invoice <span class="badge badge-secondary">New</span></h2>
             </div>
         </div>
         <div class="col-1"></div>
@@ -41,12 +42,16 @@
                                 <label class="custom-file-label" for="file">Choose file</label>
                                 <input id="file" type="file" name="file" required class="custom-file-input"/>
                             </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="validCheck" required>
+                                    <label class="form-check-label" for="validCheck">
+                                        Agree to terms and conditions
+                                    </label>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <sec:csrfInput/>
-                            <div class="upload-response">
-                                <div id="singleFileUploadError"></div>
-                                <div id="singleFileUploadSuccess"></div>
-                            </div>
                         </form>
                     </div>
                 </div>

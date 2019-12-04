@@ -43,6 +43,7 @@
                 <button class="btn btn-primary" type="submit">Add</button>
                 <button class="btn btn-secondary" type="reset">Reset</button>
                 <sec:csrfInput/>
+
             </form>
         </div>
         <div class="col-5"></div>
