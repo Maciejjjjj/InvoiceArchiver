@@ -1,0 +1,2 @@
+INSERT INTO companies (nip, company_name, address) VALUES ('NEO Sp. Z O. O.', '9860240369', 'ul. Szczecińska 25K, 66-100 Gorzów Wlkp.');
+INSERT INTO companies (nip, company_name, address) VALUES ('CASTORAMA POLSKA Sp. z o.o.', '526-10-09-959', 'ul. Karakowiaków 78, 02-255 Warszawa');
