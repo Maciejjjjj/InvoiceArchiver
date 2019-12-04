@@ -46,7 +46,7 @@
     </div>
 </div>
 <footer class="footer">
-    <jsp:include page="/WEB-INF/views/fragments/footer.jsp"/>
+    <jsp:include page="/WEB-INF/views/fragments/foooter.jsp"/>
 </footer>
 </body>
 </html>

@@ -8,7 +8,7 @@
 
 
                 <%-- Sekcje główne menu dostępne tylko dla zalogowanych użytkowników --%>
-                <sec:authorize access="!isAuthenticated()">
+                <sec:authorize access="isAuthenticated()">
                 <form class="form-inline mr-3 mt-3" method="get" action="/upload">
                     <button class="btn btn-primary" type="submit">Add Invoice</button>
 

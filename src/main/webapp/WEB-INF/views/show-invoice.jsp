@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<<html>
+<html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -20,8 +20,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 </head>
-<jsp:include page="fragments/main-menu.jsp"/>
+
 <body>
+<jsp:include page="fragments/main-menu.jsp"/>
 <div class="generic-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
@@ -65,6 +66,6 @@
 </div>
 </body>
 <footer class="footer">
-    <jsp:include page="/WEB-INF/views/fragments/footer.jsp"/>
+    <jsp:include page="/WEB-INF/views/fragments/foooter.jsp"/>
 </footer>
 </html>
