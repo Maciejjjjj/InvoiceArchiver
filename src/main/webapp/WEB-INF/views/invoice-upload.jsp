@@ -11,6 +11,7 @@
     <title>Upload invoice</title>
 </head>
 <body>
+<jsp:include page="fragments/main-menu.jsp"/>
 <div class="upload-container">
     <div class="upload-header">
         <h2>Upload invoice</h2>
@@ -30,5 +31,8 @@
         </div>
     </div>
 </div>
+<footer class="footer">
+    <jsp:include page="/WEB-INF/views/fragments/footer.jsp"/>
+</footer>
 </body>
 </html>
