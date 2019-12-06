@@ -20,7 +20,6 @@
 
 <div class="container">
 
-    <sec:authorize access="isAuthenticated()">
         <div class="row" style="margin-top: 10px; margin-bottom: 10px">
             <div class="col-1"></div>
             <div class="col-5"><h2>Welcome to "Invoice Archiver"</h2></div>
@@ -28,6 +27,7 @@
         </div>
         <p>"Archive your invoices using OCR"</p>
 
+    <sec:authorize access="isAuthenticated()">
         <form class="form-inline mr-3 mt-3" method="get" action="/upload">
             <button class="btn btn-primary" type="submit">Add Invoice</button>
                                 <sec:csrfInput/>
