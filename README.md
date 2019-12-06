@@ -2,7 +2,7 @@
 
 Aplikacja InvoiceArchiver służy do archiwizowania faktur przy użyciu oprogramowania OCR.
 
-Przed przystąpić do pracy należy dokonać rejestracji przy pomocy przycisku `Register`.
+Przed przystąpieniem do pracy należy dokonać rejestracji przy pomocy przycisku `Register`.
 
 ![](register.gif)
 
