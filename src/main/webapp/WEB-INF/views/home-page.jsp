@@ -26,7 +26,7 @@
             <div class="col-5"><h2>Welcome to "Invoice Archiver"</h2></div>
             <div class="col-5"></div>
         </div>
-        <p>""</p>
+        <p>"Archive your invoices using OCR"</p>
 
         <form class="form-inline mr-3 mt-3" method="get" action="/upload">
             <button class="btn btn-primary" type="submit">Add Invoice</button>
