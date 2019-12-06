@@ -52,7 +52,7 @@
     </div>
 </div>
 
-    <footer class="footer">
+    <footer class="fixed-bottom">
         <jsp:include page="/WEB-INF/views/fragments/foooter.jsp"/>
 </body>
 </html>

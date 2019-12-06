@@ -77,7 +77,7 @@
     <div class="col-1"></div>
 </div>
 </body>
-<footer class="footer">
+<footer class="fixed-bottom">
     <jsp:include page="/WEB-INF/views/fragments/foooter.jsp"/>
 </footer>
 </html>
