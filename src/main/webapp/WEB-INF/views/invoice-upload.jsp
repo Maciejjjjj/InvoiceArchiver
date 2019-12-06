@@ -44,7 +44,7 @@
                                 <label class="custom-file-label" for="file">Choose file</label>
                                 <input id="file" type="file" name="file" required class="custom-file-input"/>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Upload</button>
                             <sec:csrfInput/>
                             <div class="upload-response">
                                 <div id="singleFileUploadError"></div>
