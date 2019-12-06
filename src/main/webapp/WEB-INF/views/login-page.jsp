@@ -11,6 +11,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 <body>
+<body>
+<jsp:include page="fragments/main-menu.jsp"/>
+
+
+<div class="container">
+
 <div class="container">
     <div class="row" style="margin-top: 40px">
         <div class="col-1"></div>
@@ -45,5 +51,8 @@
         <div class="col-5"></div>
     </div>
 </div>
+
+    <footer class="footer">
+        <jsp:include page="/WEB-INF/views/fragments/foooter.jsp"/>
 </body>
 </html>
