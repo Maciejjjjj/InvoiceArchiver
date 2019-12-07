@@ -20,6 +20,11 @@
                         <sec:csrfInput/>
                     </form>
 
+                    <form class="form-inline mr-3 mt-3" method="get" action="/">
+                        <button class="btn btn-dark" type="submit">Home page</button>
+                        <sec:csrfInput/>
+                    </form>
+
 
             </sec:authorize>
         </ul>
