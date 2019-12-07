@@ -76,8 +76,14 @@
 
     <div class="col-1"></div>
 </div>
-</body>
-<footer class="fixed-bottom">
-    <jsp:include page="/WEB-INF/views/fragments/foooter.jsp"/>
+
+<footer class="fixed-bottom" style="position: relative;
+            height: 100px;
+            bottom: 10px;
+            width: 100%;">
+    <jsp:include page="/WEB-INF/views/fragments/footer.jsp"/>
+
 </footer>
+</body>
+
 </html>
