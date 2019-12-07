@@ -72,7 +72,7 @@
             width: 100%;">
 
 
-    <jsp:include page="/WEB-INF/views/fragments/foooter.jsp"/>
+    <jsp:include page="/WEB-INF/views/fragments/footer.jsp"/>
 
 
 
