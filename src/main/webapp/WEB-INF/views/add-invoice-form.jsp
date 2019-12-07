@@ -52,7 +52,9 @@
                 <sec:csrfInput/>
             </form>
         </div>
-        <div class="col-5"></div>
+        <div class="col-5">
+            <img src="/showfile?fileId=${savedFileId}">
+        </div>
     </div>
 </div>
     <footer class="fixed-bottom">
