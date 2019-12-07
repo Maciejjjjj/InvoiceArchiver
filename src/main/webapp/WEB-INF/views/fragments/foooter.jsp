@@ -9,7 +9,7 @@
         <div class="col-8">
             <div class="content has-text-centered">
                 <p><strong>Invoice Archiver</strong> by OCR Group, ${LocalDate.now().getYear()}.
-                    &copy; Prawa licencyjne na zasadzie praw ogólnych</p>
+                    &copy; Prawa licencyjne na zasadzie praw ogólnych.</p>
             </div>
         </div>
     </div>
