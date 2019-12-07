@@ -26,7 +26,7 @@
     </div>
     <div class="row">
         <div class="col-1"></div>
-        <div class="col-6">
+        <div class="col-4">
             <form method="post" action="/add-invoice">
                 <div class="form-group">
                     <label for="nip">NIP</label>
@@ -53,7 +53,7 @@
             </form>
         </div>
         <div class="col-5">
-            <img src="/showfile?fileId=${savedFileId}">
+            <img src="/showfile?fileId=${savedFileId}"  style="max-width:100%">
         </div>
     </div>
 </div>
