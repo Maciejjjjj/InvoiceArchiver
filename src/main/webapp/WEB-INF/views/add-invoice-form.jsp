@@ -69,7 +69,7 @@
         <div class="col-5"></div>
     </div>
 </div>
-    <footer class="fixed-bottom" style="position: absolute;
+    <footer class="fixed-bottom" style="position: relative;
             height: 100px;
             bottom: 10px;
             width: 100%;">
