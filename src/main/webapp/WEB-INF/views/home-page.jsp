@@ -25,7 +25,12 @@
             <div class="col-5"><h2>Welcome to "Invoice Archiver"</h2></div>
             <div class="col-5"></div>
         </div>
-        <p>"Archive your invoices using OCR"</p>
+    <div class="row" style="margin-top: 10px; margin-bottom: 10px">
+    <div class="col-1"></div>
+    <div class="col-5"><p>"Archive your invoices using OCR"</p></div>
+    <div class="col-5"></div>
+    </div>
+
 
     <sec:authorize access="isAuthenticated()">
         <form class="form-inline mr-3 mt-3" method="get" action="/upload">
