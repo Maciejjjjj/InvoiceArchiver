@@ -39,4 +39,3 @@ public class ShowJpegFileController {
     }
 
 }
-// model do przekazywania parametru na widok
