@@ -60,9 +60,10 @@
                     <sec:csrfInput/>
                 </form>
             </div>
+
             <div class="col-7">
                 <div class="content">
-                    <img src="/show-file?savedFileId=${savedFileId}" style="max-width: 100%"/>
+                    <embed src="/show-file?savedFileId=${savedFileId}" type="application/pdf" style="max-width: 100%" />
                 </div>
             </div>
         </div>
